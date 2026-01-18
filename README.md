@@ -1,6 +1,6 @@
 # 🚀 Dash Framework
 
-Processo ágil leve baseado em Scrum/Kanban, otimizado para desenvolvimento de software corporativo e jogos.
+Processo ágil leve baseado em Scrum/Kanban, otimizado para desenvolvimento de jogos.
 
 ## 📋 Sobre
 
