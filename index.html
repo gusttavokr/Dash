@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dash - Framework Ágil</title>
-    <meta name="description" content="Framework agil leve baseado em Scrum/Kanban, otimizado para desenvolvimento de software corporativo e jogos.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <meta name="description"
+        content="Framework agil leve baseado em Scrum/Kanban, otimizado para desenvolvimento de software corporativo e jogos.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0a0b;
@@ -43,7 +48,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-family: 'Space Grotesk', sans-serif;
         }
 
@@ -158,7 +167,7 @@
         .hero-grid {
             position: absolute;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(39, 39, 42, 0.3) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(39, 39, 42, 0.3) 1px, transparent 1px);
             background-size: 60px 60px;
@@ -313,6 +322,98 @@
             padding: 1.5rem;
             border-radius: 16px;
             overflow-x: auto;
+        }
+
+        /* Activity Diagram */
+        .diagram-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-diagram {
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .diagram-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .diagram-node {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .diagram-node:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .node-start {
+            border-color: var(--accent-primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .node-loop {
+            border-color: var(--accent-secondary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .node-feedback {
+            border-color: var(--accent-secondary);
+        }
+
+        .node-end {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 214, 160, 0.15));
+            border-color: var(--accent-primary);
+        }
+
+        .diagram-arrow {
+            color: var(--accent-primary);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .diagram-loop-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -0.25rem;
+        }
+
+        .loop-svg {
+            width: 100%;
+            max-width: 300px;
+            height: 50px;
+        }
+
+        .loop-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: -0.5rem;
         }
 
         /* Sections */
@@ -496,7 +597,7 @@
         /* Roles Section */
         .roles-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
 
@@ -698,16 +799,27 @@
             }
 
             .roles-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .practices-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .diagram-main {
+                gap: 0.3rem;
+            }
+
+            .diagram-node {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.65rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links, .nav-cta {
+
+            .nav-links,
+            .nav-cta {
                 display: none;
             }
 
@@ -746,9 +858,34 @@
             .practices-grid {
                 grid-template-columns: 1fr;
             }
+
+            .diagram-main {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .diagram-arrow {
+                transform: rotate(90deg);
+                font-size: 0.875rem;
+            }
+
+            .diagram-loop-container {
+                display: none;
+            }
+
+            .activity-diagram::after {
+                content: "Loop enquanto o jogo não estiver concluído";
+                font-size: 0.6rem;
+                color: var(--text-muted);
+                font-style: italic;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -781,8 +918,8 @@
                 </div>
                 <h1>Desenvolva jogos com <span class="text-accent">agilidade</span> e precisão</h1>
                 <p class="hero-description">
-                    Dash combina o melhor do Scrum e Kanban em um processo 
-                    otimizado para equipes de desenvolvimento de jogos. 
+                    Dash combina o melhor do Scrum e Kanban em um processo
+                    otimizado para equipes de desenvolvimento de jogos.
                     Sprints curtas, feedback contínuo, entregas reais.
                 </p>
                 <div class="hero-buttons">
@@ -802,7 +939,7 @@
                         <div class="stat-label">Fases</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">3</div>
+                        <div class="stat-value">4</div>
                         <div class="stat-label">Papéis</div>
                     </div>
                 </div>
@@ -816,7 +953,7 @@
             <span class="section-label">Processo</span>
             <h2 class="section-title">Fases do Desenvolvimento</h2>
             <p class="section-description">
-                Cada fase possui objetivos claros, atividades bem definidas e artefatos 
+                Cada fase possui objetivos claros, atividades bem definidas e artefatos
                 que garantem a qualidade e rastreabilidade do projeto.
             </p>
         </div>
@@ -840,8 +977,11 @@
                         <span class="phase-tag">Planejamento</span>
                     </div>
                     <p class="phase-description">
-                        <strong>Objetivo:</strong> Definir a visão clara do projeto, estabelecendo as bases para todo o desenvolvimento. A equipe trabalha com stakeholders para identificar objetivos, público-alvo e funcionalidades principais.<br><br>
-                        <strong>Atividades:</strong> Sessões de brainstorming, análise de mercado, definição de escopo e priorização inicial do backlog. Alinhamento de expectativas entre todos os envolvidos.
+                        <strong>Objetivo:</strong> Definir a visão clara do projeto, estabelecendo as bases para todo o
+                        desenvolvimento. A equipe trabalha com stakeholders para identificar objetivos, público-alvo e
+                        funcionalidades principais.<br><br>
+                        <strong>Atividades:</strong> Sessões de brainstorming, análise de mercado, definição de escopo e
+                        priorização inicial do backlog. Alinhamento de expectativas entre todos os envolvidos.
                     </p>
                     <div class="artifacts-label">Artefatos</div>
                     <div class="artifacts-list">
@@ -872,8 +1012,10 @@
                         <span class="phase-tag">Prototipagem</span>
                     </div>
                     <p class="phase-description">
-                        <strong>Objetivo:</strong> Validar a viabilidade técnica e criativa do projeto antes da produção em escala. Fase crítica para identificar riscos e ajustar escopo conforme necessário.<br><br>
-                        <strong>Atividades:</strong> Desenvolvimento de protótipos funcionais, criação do GDD detalhado, estimativas de esforço e identificação de dependências técnicas.
+                        <strong>Objetivo:</strong> Validar a viabilidade técnica e criativa do projeto antes da produção
+                        em escala. Fase crítica para identificar riscos e ajustar escopo conforme necessário.<br><br>
+                        <strong>Atividades:</strong> Desenvolvimento de protótipos funcionais, criação do GDD detalhado,
+                        estimativas de esforço e identificação de dependências técnicas.
                     </p>
                     <div class="artifacts-label">Artefatos</div>
                     <div class="artifacts-list">
@@ -904,8 +1046,10 @@
                         <span class="phase-tag">Desenvolvimento</span>
                     </div>
                     <p class="phase-description">
-                        <strong>Objetivo:</strong> Desenvolver o jogo de forma iterativa e incremental, entregando funcionalidades testáveis a cada sprint. Fase mais longa onde o produto toma forma.<br><br>
-                        <strong>Atividades:</strong> Ciclos de 1-2 semanas com dailies, code reviews e integração contínua. Arte, som, código e narrativa evoluem em paralelo com documentação atualizada.
+                        <strong>Objetivo:</strong> Desenvolver o jogo de forma iterativa e incremental, entregando
+                        funcionalidades testáveis a cada sprint. Fase mais longa onde o produto toma forma.<br><br>
+                        <strong>Atividades:</strong> Ciclos de 1-2 semanas com dailies, code reviews e integração
+                        contínua. Arte, som, código e narrativa evoluem em paralelo com documentação atualizada.
                     </p>
                     <div class="artifacts-label">Artefatos</div>
                     <div class="artifacts-list">
@@ -937,8 +1081,12 @@
                         <span class="phase-tag">Análise</span>
                     </div>
                     <p class="phase-description">
-                        <strong>Objetivo:</strong> Analisar o progresso pós-sprint, coletar métricas e ajustar o curso do projeto baseado em dados concretos. Garante a melhoria contínua do processo e produto.<br><br>
-                        <strong>Atividades:</strong> Sprint reviews com demos para stakeholders, retrospectivas da equipe, análise de velocity e bug rate. Feedback consolidado e priorizado para próximas iterações.
+                        <strong>Objetivo:</strong> Analisar o progresso pós-sprint, coletar métricas e ajustar o curso
+                        do projeto baseado em dados concretos. Garante a melhoria contínua do processo e
+                        produto.<br><br>
+                        <strong>Atividades:</strong> Sprint reviews com demos para stakeholders, retrospectivas da
+                        equipe, análise de velocity e bug rate. Feedback consolidado e priorizado para próximas
+                        iterações.
                     </p>
                     <div class="artifacts-label">Artefatos</div>
                     <div class="artifacts-list">
@@ -969,8 +1117,11 @@
                         <span class="phase-tag">Lançamento</span>
                     </div>
                     <p class="phase-description">
-                        <strong>Objetivo:</strong> Polir todos os aspectos do jogo, preparar o build final e obter certificações necessárias para lançamento. Garante que o produto esteja pronto para o mercado.<br><br>
-                        <strong>Atividades:</strong> Refinamento de UX, otimização de performance, correção de bugs finais, testes de certificação e preparação de materiais de marketing.
+                        <strong>Objetivo:</strong> Polir todos os aspectos do jogo, preparar o build final e obter
+                        certificações necessárias para lançamento. Garante que o produto esteja pronto para o
+                        mercado.<br><br>
+                        <strong>Atividades:</strong> Refinamento de UX, otimização de performance, correção de bugs
+                        finais, testes de certificação e preparação de materiais de marketing.
                     </p>
                     <div class="artifacts-label">Artefatos</div>
                     <div class="artifacts-list">
@@ -991,35 +1142,23 @@
             <span class="section-label">Equipe</span>
             <h2 class="section-title">Papéis e Responsabilidades</h2>
             <p class="section-description">
-                Definição clara de papéis para garantir colaboração eficiente 
-                e entregas de qualidade em cada sprint.
+                Definição clara de papéis para garantir colaboração eficiente
+                e entregas de qualidade em cada sprint. <strong>Os papéis são flexíveis</strong> —
+                quem tiver melhor desempenho em determinada stack prevalecerá na execução das tarefas.
             </p>
         </div>
 
         <div class="roles-grid">
             <div class="role-card">
-                <div class="role-icon">👑</div>
-                <h3 class="role-title">Product Owner</h3>
+                <div class="role-icon">🛡️</div>
+                <h3 class="role-title">Keeper</h3>
                 <p class="role-description">
-                    Prioriza o backlog, valida entregas com stakeholders e 
-                    define a visão do produto. Garante que a equipe trabalhe 
-                    nas funcionalidades de maior valor.
+                    Responsável pela visão do produto e gerenciamento das sprints.
+                    Prioriza o backlog, valida entregas com stakeholders, facilita
+                    as sprints, remove impedimentos e protege a equipe de distrações externas.
                 </p>
                 <p class="role-activities">
-                    <strong>Atua em:</strong> Concepção, Pré-Produção, Produção (Opcional), Feedback
-                </p>
-            </div>
-
-            <div class="role-card">
-                <div class="role-icon">🎯</div>
-                <h3 class="role-title">Scrum Master</h3>
-                <p class="role-description">
-                    Facilita as sprints, remove impedimentos e garante a 
-                    aplicação correta do processo. Protege a equipe de 
-                    distrações externas.
-                </p>
-                <p class="role-activities">
-                    <strong>Atua em:</strong> Todas as fases (daily, retrospectiva)
+                    <strong>Atua em:</strong> Todas as fases (daily, retrospectiva, visão do produto)
                 </p>
             </div>
 
@@ -1027,8 +1166,8 @@
                 <div class="role-icon">💻</div>
                 <h3 class="role-title">Developer</h3>
                 <p class="role-description">
-                    Codifica, prototipa, testa e implementa funcionalidades. 
-                    Responsável pela qualidade técnica e criativa das 
+                    Codifica, prototipa, testa e implementa funcionalidades.
+                    Responsável pela qualidade técnica e criativa das
                     mecânicas.
                 </p>
                 <p class="role-activities">
@@ -1039,23 +1178,24 @@
                 <div class="role-icon">🎨</div>
                 <h3 class="role-title">Game Designer</h3>
                 <p class="role-description">
-                    Prototipa, desenha e produz a parte criativa do projeto. 
-                    Responsável pela qualidade artística e narrativa.
+                    Responsável pela identidade visual e conceitual do jogo.
+                    Define a direção artística, cria concept arts, interfaces e
+                    elementos gráficos que compõem a estética e atmosfera do projeto.
                 </p>
                 <p class="role-activities">
-                    <strong>Atua em:</strong> Pré-Prod, Produção, Testes, Implantação
+                    <strong>Atua em:</strong> Concepção, Pré-Prod, Produção, Feedback
                 </p>
             </div>
             <div class="role-card">
-                <div class="role-icon">💻</div>
-                <h3 class="role-title">Developer/Designer</h3>
+                <div class="role-icon">🔊</div>
+                <h3 class="role-title">Sound Designer</h3>
                 <p class="role-description">
-                    Codifica, prototipa, testa e implementa funcionalidades. 
-                    Responsável pela qualidade técnica e criativa das 
-                    entregas.
+                    Cria a identidade sonora do jogo. Desenvolve efeitos sonoros (SFX),
+                    trilhas musicais, ambientação e feedback auditivo que reforçam
+                    a imersão e comunicam estados do jogo ao jogador.
                 </p>
                 <p class="role-activities">
-                    <strong>Atua em:</strong> Pré-Prod, Produção, Testes, Implantação
+                    <strong>Atua em:</strong> Pré-Prod, Produção, Pós-Produção
                 </p>
             </div>
         </div>
@@ -1067,7 +1207,7 @@
             <span class="section-label">Metodologia</span>
             <h2 class="section-title">Práticas Ágeis Integradas</h2>
             <p class="section-description">
-                Dash combina as melhores práticas do mercado em um 
+                Dash combina as melhores práticas do mercado em um
                 framework coeso e adaptável.
             </p>
         </div>
@@ -1104,10 +1244,10 @@
     </section>
 
     <!-- Author Section -->
-    <div class="author-section">
+    <!-- <div class="author-section">
         <p class="author-label">Desenvolvido por</p>
         <h2 class="author-name">Gustavo Maia Militao</h2>
-    </div>
+    </div> -->
 
     <!-- Footer -->
     <footer>
@@ -1115,8 +1255,8 @@
     </footer>
 
     <script>
-        mermaid.initialize({ 
-            startOnLoad: true, 
+        mermaid.initialize({
+            startOnLoad: true,
             theme: 'dark',
             themeVariables: {
                 primaryColor: '#10b981',
@@ -1143,4 +1283,5 @@
         });
     </script>
 </body>
+
 </html>
