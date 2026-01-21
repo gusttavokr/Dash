@@ -967,17 +967,48 @@
                     </div>
                 </div>
             </div>
-            <div class="mermaid">
-                flowchart LR
-                A([Concepção]) --> B([Pré-produção])
-                B --> C([Produção])
-                C --> D([Feedback])
+            <!-- Activity Diagram -->
+            <div id="diagrama" class="hero-visual">
+                <div class="hero-card">
+                    <div class="diagram-title">Fluxo de Desenvolvimento do Jogo</div>
 
-                D -->|Jogo concluído| E([Pós-produção])
-                D -->|Jogo não concluído| B
+                    <div class="activity-diagram">
+                        <!-- Linha principal: Concepção → Pré-produção → Produção → Feedback -->
+                        <div class="diagram-main">
+                            <div class="diagram-node node-start">Concepção</div>
+                            <div class="diagram-arrow">➜</div>
+
+                            <div class="diagram-node node-loop" id="pre-prod">Pré-produção</div>
+                            <div class="diagram-arrow">➜</div>
+
+                            <div class="diagram-node">Produção</div>
+                            <div class="diagram-arrow">➜</div>
+
+                            <div class="diagram-node node-feedback">Feedback</div>
+                        </div>
+
+                        <!-- Loop de Feedback para Pré-produção -->
+                        <div class="diagram-loop-container">
+                            <svg class="loop-svg" viewBox="0 0 300 40" preserveAspectRatio="xMidYMid meet">
+                                <!-- Caminho saindo de Feedback (direita) e voltando para Pré-produção (esquerda) -->
+                                <path d="M 270 0 L 270 25 Q 270 35 260 35 L 90 35 Q 80 35 80 25 L 80 0" fill="none"
+                                    stroke="var(--accent-secondary)" stroke-width="2" stroke-dasharray="4 2" />
+                                <!-- Seta apontando para cima, de volta à Pré-produção -->
+                                <polygon points="75,0 80,10 85,0" fill="var(--accent-secondary)" />
+                            </svg>
+                            <span class="loop-label">
+                                Enquanto o jogo não estiver concluído, retornar para Pré-produção após o Feedback
+                            </span>
+                        </div>
+
+                        <!-- Linha final: Feedback → Pós-produção -->
+                        <div class="diagram-final">
+                            <div class="diagram-arrow-down">↓</div>
+                            <div class="diagram-node node-end">Pós-produção</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </section>
 
