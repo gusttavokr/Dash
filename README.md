@@ -37,4 +37,4 @@ Abra o arquivo `index.html` em seu navegador para visualizar a documentação co
 **Disciplina**: Processo de Software  
 **Autor**: Gustavo Maia Militão  
 
-© 2026 Dash Framework | Trabalho Acadêmico - PDS Corporativo
+© 2026 Dash Framework | Trabalho Acadêmico
